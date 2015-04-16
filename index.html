@@ -1,14 +1,73 @@
 <html>
 <head>
 	<title>Academic Works</title>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="style/style.css"/>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script type="text/javascript" href="tooltip.js"></script>
 </head>
 <body>
 
-	<div class="container"></div>
+	<div class="container">
+		<p>The future of AcademicWorks is exciting, but not as exciting as the future of the entire universe according to Wikipedia.</p>
+		<p>Here are 3 random events from Wikipedia's <a href="http://en.wikipedia.org/wiki/Timeline_of_the_near_future">Timeline of the Near Future</a>. Upon hovering over each date, you can learn something fun that will happen in that year and imaginary season.</p>
+		<p>If you're interested in learning more about the events mentioned, you can click the button at the bottom of this page to head to Wikipedia.</p>
+		
+		
+		<div class="timeline">
+			<div class="event"><span class="clickmeOne" href="#"><div class="circle"></div>WINTER 2032</div>
+			<div class="event"><span class="clickmeTwo" href="#"><div class="circle"></div>AUTUMN 2049</div>
+			<div class="event"><span class="clickmeThree" href="#"><div class="circle"></div></span>SPRING 2076</div>
+		</div>
+	</div>
 	<div class="bottom-nav">
-		<div class="wikipedia-button"><div style='display:table-cell;vertical-align:middle'>Take Me To Wikipedia!</div></div>
+		<div class="wikipedia-button"><div style='display:table-cell;vertical-align:middle'><a style="color:white;text-decoration:none;" href="http://en.wikipedia.org">Take Me To Wikipedia!</a></div></div>
 		<div class="inactive-button"><div style='display:table-cell;vertical-align:middle'>This Button Does Nothing</div></div>
 	</div>
+
+	<script type="text/javascript">
+
+		$(document).ready(function () {
+
+			$('span.clickmeOne').mouseover(function(event) {
+			    createTooltip(event, '<div class="tooltip">Transit of Mercury</div>');               
+			}).mouseout(function(){
+			    // create a hidefunction on the callback if you want
+			    removeTooltip(); 
+			});
+
+			$('span.clickmeTwo').mouseover(function(event) {
+			    createTooltip(event, '<div class="tooltip">Joint Declaration of the Question of Macau Expires</div>');               
+			}).mouseout(function(){
+			    // create a hidefunction on the callback if you want
+			    removeTooltip(); 
+			});
+
+			$('span.clickmeThree').mouseover(function(event) {
+			    createTooltip(event, '<div class="tooltip">The planetoid 90377 Sedna reaches perihelion.</div>');               
+			}).mouseout(function(){
+			    // create a hidefunction on the callback if you want
+			    removeTooltip(); 
+			});
+
+			function removeTooltip() {
+				$(".tooltip").remove();
+			};
+
+			function createTooltip(event, content){          
+			    $(content).appendTo('body');
+			    positionTooltip(event);        
+			};
+
+			function positionTooltip(event){
+			    var tPosX = event.pageX - 100;
+			    var tPosY = event.pageY - 50;
+			    $('div.tooltip').css({'position': 'absolute', 'top': tPosY, 'left': tPosX});
+			};
+
+		});
+
+	</script>
+
 </body>
 </html>
